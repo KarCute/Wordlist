@@ -173,7 +173,7 @@ int getListWithWord(vector<string> words, int len, vector<string> &answer, char 
 			cout << "Invalid File! There is no word list in the file." << endl;
 			exit(0);
 		}
-	
+
 		hasCircle(G, 0);
 		if (G->withCircle)
 		{
@@ -299,7 +299,7 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 		return size;
 	}
 
-	else 
+	else
 	{
 		ReduceWords(words);
 		Graph G = CreateGraph(words);
@@ -309,8 +309,8 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 			cout << "Invalid File! There is no word list in the file." << endl;
 			exit(0);
 		}
-	
-	
+
+
 		hasCircle(G, 0);
 		if (G->withCircle)
 		{
@@ -403,4 +403,41 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 		return list_length;
 		return 0;
 	}
+}
+
+
+int gen_chain_word(char* words[], int len, char* result[], char head, char tail, bool enable_loop)
+{
+	vector<string> words_vec;
+	vector<string> ans;
+	for (int i = 0; i < len; i++)
+	{
+		string s = words[i];
+		words_vec.push_back(s);
+	}
+	int length = getListWithWord(words_vec, len, ans, head, tail, enable_loop);
+	for (int i = 0; i < length; i++)
+	{
+		string s = ans[i];
+		strcpy_s(result[i], s.length() + 1, s.c_str());
+	}
+	return length;
+}
+
+int gen_chain_char(char* words[], int len, char* result[], char head, char tail, bool enable_loop)
+{
+	vector<string> words_vec;
+	vector<string> ans;
+	for (int i = 0; i < len; i++)
+	{
+		string s = words[i];
+		words_vec.push_back(s);
+	}
+	int length = getListWithLength(words_vec, len, ans, head, tail, enable_loop);
+	for (int i = 0; i < length; i++)
+	{
+		string s = ans[i];
+		strcpy_s(result[i], s.length() + 1, s.c_str());
+	}
+	return length;
 }

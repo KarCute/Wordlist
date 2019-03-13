@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAX_VERTEX 10001
+#define MAX_VERTEX 401//10001
 #define INF 1000001
 typedef struct GNode *Graph;
 struct GNode

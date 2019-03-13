@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 		cout << "Invalid File! There is no word list in the file." << endl;
 		exit(0);
 	}
-	
+
 	for (int i = 0; i < length; i++)
 	{
 		outfile << ans[i] << endl;
