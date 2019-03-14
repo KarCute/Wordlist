@@ -12,7 +12,7 @@ namespace ReadfileUnitTest1
 		
 		TEST_METHOD(TestMethod1)
 		{
-			// TODO: 在此输入测试代码
+			// 正确
 			vector <string> words;
 			ReadFile("normal_test.txt", words);
 			Assert::AreEqual((string)"algebra", words[0]);
@@ -25,5 +25,21 @@ namespace ReadfileUnitTest1
 
 		}
 
+
+		TEST_METHOD(TestMethod2)
+		{
+			// 错误
+			vector <string> words;
+			try {
+				ReadFile("normal_test3.txt", words);
+				Assert::IsTrue(false);
+			}
+			catch (myexception4& e) {
+				Assert::IsTrue(true);
+			}
+			catch (...) {
+				Assert::IsTrue(false);
+			}
+		}
 	};
 }

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "InputHandler.h"
+#include "Error.h"
 
 void InputHandler(int argc, char* argv[], bool &enable_loop, int &word_or_char, char &head, char &tail, string &Filename)
 {
@@ -14,8 +14,9 @@ void InputHandler(int argc, char* argv[], bool &enable_loop, int &word_or_char, 
 		{
 			if (enable_loop)
 			{
-				cout << "Wrong parameter! Wrong parameter combination." << endl;
-				exit(0);
+				//cout << "Wrong parameter! Wrong parameter combination." << endl;
+				//exit(0);
+				throw myexception1();
 			}
 			enable_loop = true;
 		}
@@ -23,15 +24,17 @@ void InputHandler(int argc, char* argv[], bool &enable_loop, int &word_or_char, 
 		{
 			if (head != 0)
 			{
-				cout << "Wrong parameter! Wrong parameter combination." << endl;
-				exit(0);
+				//cout << "Wrong parameter! Wrong parameter combination." << endl;
+				//exit(0);
+				throw myexception1();
 			}
 			i++;
 			// Is the char legal
 			if (strlen(argv[i]) > 1 || isalpha(argv[i][0]) == 0)
 			{
-				cout << "Wrong parameter! The parameter does not meet the specifications." << endl;
-				exit(0);
+				//cout << "Wrong parameter! The first and last letter constraints are illegal." << endl;
+				//exit(0);
+				throw myexception2();
 			}
 			head = argv[i][0];
 		}
@@ -39,15 +42,17 @@ void InputHandler(int argc, char* argv[], bool &enable_loop, int &word_or_char, 
 		{
 			if (tail!= 0)
 			{
-				cout << "Wrong parameter! Wrong parameter combination." << endl;
-				exit(0);
+				//cout << "Wrong parameter! Wrong parameter combination." << endl;
+				//exit(0);
+				throw myexception1();
 			}
 			i++;
 			// Is the char legal
 			if (strlen(argv[i]) > 1 || isalpha(argv[i][0]) == 0)
 			{
-				cout << "Wrong parameter! The parameter does not meet the specifications." << endl;
-				exit(0);
+				//cout << "Wrong parameter! The parameter does not meet the specifications." << endl;
+				//exit(0);
+				throw myexception2();
 			}
 			tail = argv[i][0];
 		}
@@ -56,8 +61,9 @@ void InputHandler(int argc, char* argv[], bool &enable_loop, int &word_or_char, 
 			i++;
 			if (word_or_char != 0)
 			{
-				cout << "Wrong parameter! Wrong parameter combination." << endl;
-				exit(0);
+				//cout << "Wrong parameter! Wrong parameter combination." << endl;
+				//exit(0);
+				throw myexception1();
 			}
 			word_or_char = 1;
 			Filename = argv[i];
@@ -67,22 +73,25 @@ void InputHandler(int argc, char* argv[], bool &enable_loop, int &word_or_char, 
 			i++;
 			if (word_or_char != 0)
 			{
-				cout << "Wrong parameter! Wrong parameter combination." << endl;
-				exit(0);
+				//cout << "Wrong parameter! Wrong parameter combination." << endl;
+				//exit(0);
+				throw myexception1();
 			}
 			word_or_char = 2;
 			Filename = argv[i];
 		}
 		else
 		{
-			cout << "Wrong parameter! The parameter does not meet the specifications." << endl;
-			exit(0);
+			//cout << "Wrong parameter! The parameter does not meet the specifications." << endl;
+			//exit(0);
+			throw myexception3();
 		}
 	}
 	if (word_or_char == 0)
 	{
-		cout << "Wrong parameter! The parameter does not meet the specifications." << endl;
-		exit(0);
+		//cout << "Wrong parameter! Wrong parameter combination." << endl;
+		//exit(0);
+		throw myexception1();
 	}
 	head = tolower(head);
 	tail = tolower(tail);

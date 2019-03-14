@@ -134,12 +134,17 @@ int getListWithWord(vector<string> words, int len, vector<string> &answer, char 
 {
 	if (enable_loop)
 	{
+		if (len > 100)
+		{
+			throw myexception6();
+		}
 		Graph G = CreateGraph(words);
 
 		if (!G->hasList)
 		{
-			cout << "Invalid File! There is no word list in the file." << endl;
-			exit(0);
+			//cout << "Invalid File! There is no word list in the file." << endl;
+			//exit(0);
+			throw myexception8();
 		}
 
 		for (int i = 0; i < G->vertex; i++)
@@ -160,6 +165,10 @@ int getListWithWord(vector<string> words, int len, vector<string> &answer, char 
 		{
 			answer.push_back(words[*i]);
 		}
+		if (size < 2)
+		{
+			throw myexception8();
+		}
 		return size;
 	}
 
@@ -170,15 +179,17 @@ int getListWithWord(vector<string> words, int len, vector<string> &answer, char 
 
 		if (!G->hasList)
 		{
-			cout << "Invalid File! There is no word list in the file." << endl;
-			exit(0);
+			//cout << "Invalid File! There is no word list in the file." << endl;
+			//exit(0);
+			throw myexception8();
 		}
 
 		hasCircle(G, 0);
 		if (G->withCircle)
 		{
-			cout << "Invalid File! The words can form words ring." << endl;
-			exit(0);
+			//cout << "Invalid File! The words can form words ring." << endl;
+			//exit(0);
+			throw myexception7();
 		}
 
 		for (int i = 0; i < G->vertex; i++)
@@ -261,6 +272,10 @@ int getListWithWord(vector<string> words, int len, vector<string> &answer, char 
 			list_length++;
 		}
 		answer.push_back(words[end]);
+		if (list_length < 2)
+		{
+			throw myexception8();
+		}
 		return list_length;
 	}
 }
@@ -270,12 +285,18 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 {
 	if (enable_loop)
 	{
+		if (len > 100)
+		{
+			throw myexception6();
+		}
+
 		Graph G = CreateGraph(words);
 
 		if (!G->hasList)
 		{
-			cout << "Invalid File! There is no word list in the file." << endl;
-			exit(0);
+			//cout << "Invalid File! There is no word list in the file." << endl;
+			//exit(0);
+			throw myexception8();
 		}
 
 		for (int i = 0; i < G->vertex; i++)
@@ -296,6 +317,10 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 		{
 			answer.push_back(words[*i]);
 		}
+		if (size < 2)
+		{
+			throw myexception8();
+		}
 		return size;
 	}
 
@@ -306,16 +331,18 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 
 		if (!G->hasList)
 		{
-			cout << "Invalid File! There is no word list in the file." << endl;
-			exit(0);
+			//cout << "Invalid File! There is no word list in the file." << endl;
+			//exit(0);
+			throw myexception8();
 		}
 
 
 		hasCircle(G, 0);
 		if (G->withCircle)
 		{
-			cout << "Invalid File! The words can form words ring." << endl;
-			exit(0);
+			//cout << "Invalid File! The words can form words ring." << endl;
+			//exit(0);
+			throw myexception7();
 		}
 
 		for (int i = 0; i < G->vertex; i++)
@@ -400,14 +427,25 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 			list_length++;
 		}
 		answer.push_back(words[end]);
+		if (list_length < 2)
+		{
+			throw myexception8();
+		}
 		return list_length;
-		return 0;
 	}
 }
 
 
 int gen_chain_word(char* words[], int len, char* result[], char head, char tail, bool enable_loop)
 {
+	if (head != 0 && !isalpha(head))
+	{
+		throw myexception2();
+	}
+	if (tail != 0 && !isalpha(tail))
+	{
+		throw myexception2();
+	}
 	vector<string> words_vec;
 	vector<string> ans;
 	for (int i = 0; i < len; i++)
@@ -426,6 +464,14 @@ int gen_chain_word(char* words[], int len, char* result[], char head, char tail,
 
 int gen_chain_char(char* words[], int len, char* result[], char head, char tail, bool enable_loop)
 {
+	if (head != 0 && !isalpha(head))
+	{
+		throw myexception2();
+	}
+	if (tail != 0 && !isalpha(tail))
+	{
+		throw myexception2();
+	}
 	vector<string> words_vec;
 	vector<string> ans;
 	for (int i = 0; i < len; i++)
@@ -439,5 +485,7 @@ int gen_chain_char(char* words[], int len, char* result[], char head, char tail,
 		string s = ans[i];
 		strcpy_s(result[i], s.length() + 1, s.c_str());
 	}
+	words_vec.clear();
+	ans.clear();
 	return length;
 }

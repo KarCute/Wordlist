@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
 #include "Graph.h"
+#include "Error.h"
 
 Graph CreateGraph(vector<string> words);
 void hasCircle(Graph G, int v);

@@ -160,7 +160,7 @@ namespace FindLongestWordListUnitTest1
 			}
 		}
 
-		TEST_METHOD(TestMethod8)
+ 		TEST_METHOD(TestMethod8)
 		{
 			// TODO: normal_test8
 			char* words[101] = { "alement", "oeaven", "tabla", "teaco", "talk" };
@@ -179,6 +179,144 @@ namespace FindLongestWordListUnitTest1
 			for (int i = 0; i < 101; i++)
 			{
 				free(answer[i]);
+			}
+		}
+
+		TEST_METHOD(TestMethod9)
+		{
+			// wrong_test1
+			char* words[101] = { "alement", "oeaven", "tabla", "teaco", "talk" };
+			char* answer[101];
+			for (int i = 0; i < 101; i++)
+			{
+				answer[i] = (char*)malloc(sizeof(char) * 601);
+			}
+
+			
+			try {
+				int l = gen_chain_word(words, 5, answer, 0, 'n', false);
+				Assert::IsTrue(false);
+			}
+			catch (myexception7& e) {
+				Assert::IsTrue(true);
+			}
+			catch (...) {
+				Assert::IsTrue(false);
+			}
+		}
+
+		TEST_METHOD(TestMethod10)
+		{
+			// wrong_test2
+			char* words[101] = { "alement", "oeaven", "tabla", "teaco", "talk" };
+			char* answer[101];
+			for (int i = 0; i < 101; i++)
+			{
+				answer[i] = (char*)malloc(sizeof(char) * 601);
+			}
+
+
+			try {
+				int l = gen_chain_char(words, 5, answer, 0, 'n', false);
+				Assert::IsTrue(false);
+			}
+			catch (myexception7& e) {
+				Assert::IsTrue(true);
+			}
+			catch (...) {
+				Assert::IsTrue(false);
+			}
+		}
+
+		TEST_METHOD(TestMethod11)
+		{
+			// wrong_test3
+			char* words[101] = { "alement", "oeaven", "tabla", "teaco", "talk" };
+			char* answer[101];
+			for (int i = 0; i < 101; i++)
+			{
+				answer[i] = (char*)malloc(sizeof(char) * 601);
+			}
+
+
+			try {
+				int l = gen_chain_word(words, 5, answer, 'b', 'n', true);
+				Assert::IsTrue(false);
+			}
+			catch (myexception8& e) {
+				Assert::IsTrue(true);
+			}
+			catch (...) {
+				Assert::IsTrue(false);
+			}
+		}
+
+		TEST_METHOD(TestMethod12)
+		{
+			// wrong_test4
+			char* words[101] = { "alement", "oeaven", "bablu", "peacl", "yalk" };
+			char* answer[101];
+			for (int i = 0; i < 101; i++)
+			{
+				answer[i] = (char*)malloc(sizeof(char) * 601);
+			}
+
+
+			try {
+				int l = gen_chain_char(words, 5, answer, 0, 'n', false);
+				Assert::IsTrue(false);
+			}
+			catch (myexception8& e) {
+				Assert::IsTrue(true);
+			}
+			catch (...) {
+				Assert::IsTrue(false);
+			}
+		}
+
+		TEST_METHOD(TestMethod13)
+		{
+			// wrong_test5
+			char* words[101] = { "alement", "oeaven", "tabla", "teaco", "talk" };
+			char* answer[101];
+			for (int i = 0; i < 101; i++)
+			{
+				answer[i] = (char*)malloc(sizeof(char) * 601);
+			}
+
+
+			try {
+				int l = gen_chain_word(words, 5, answer, '1', 'n', true);
+				Assert::IsTrue(false);
+			}
+			catch (myexception2& e) {
+				Assert::IsTrue(true);
+			}
+			catch (...) {
+				Assert::IsTrue(false);
+			}
+		}
+
+		TEST_METHOD(TestMethod14)
+		{
+			// wrong_test6
+			char* words[101] = { "alement", "oeaven", "tabla", "teaco", "talk" };
+			char* answer[101];
+			for (int i = 0; i < 101; i++)
+			{
+				answer[i] = (char*)malloc(sizeof(char) * 601);
+			}
+
+
+			try {
+				int l = gen_chain_char(words, 5, answer, 'b', '.', false);
+				Assert::IsTrue(false);
+			}
+			catch (myexception2& e) {
+				Assert::IsTrue(true);
+			}
+			catch (...) {
+				Assert::IsTrue(false);
 			}
 		}
 

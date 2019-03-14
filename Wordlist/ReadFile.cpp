@@ -11,8 +11,9 @@ void ReadFile(string FileName, vector<string> &words)
 	ifstream pin(FileName);
 	if (!pin)
 	{
-		cout << "Error! there is no such file '" << FileName << "' !" << endl;
-		exit(0);
+		//cout << "Error! there is no such file!" << endl;
+		//exit(0);
+		throw myexception4();
 	}
 	while (pin.peek() != EOF)
 	{
@@ -21,9 +22,10 @@ void ReadFile(string FileName, vector<string> &words)
 		{
 			if (i == 600)
 			{
-				cout << "sorry! I don't think there is a such long word" << endl;
-				cout << "current word: " << word << endl;
-				exit(0);
+				//cout << "sorry! I don't think there is a such long word" << endl;
+				//cout << "current word: " << word << endl;
+				//exit(0);
+				throw myexception5();
 			}
 			word[i++] = tolower(letter);
 		}
@@ -47,15 +49,16 @@ void ReadFile(string FileName, vector<string> &words)
 
 	if (words.size() > 10000)
 	{
-		cout << "There are more words than required.";
-		exit(0);
+		//cout << "Error! There are more words than required.";
+		//exit(0);
+		throw myexception6();
 	}
 }
 
-int headTailHash[26][26] = { 0 };
-string longest[26][26];
 void ReduceWords(vector<string> &words)
 {
+	int headTailHash[26][26] = { 0 };
+	string longest[26][26];
 	for (int i = 0; i < 26; i++)
 	{
 		for (int j = 0; j < 26; j++)
@@ -79,8 +82,9 @@ void ReduceWords(vector<string> &words)
 		{
 			if (head == tail)
 			{
-				cout << "Invalid File! The words can form words ring." << endl;
-				exit(0);
+				//cout << "Invalid File! The words can form words ring." << endl;
+				//exit(0);
+				throw myexception7();
 			}
 			else if (headTailHash[head][tail] < int(s.length()))
 			{
