@@ -142,8 +142,6 @@ int getListWithWord(vector<string> words, int len, vector<string> &answer, char 
 
 		if (!G->hasList)
 		{
-			//cout << "Invalid File! There is no word list in the file." << endl;
-			//exit(0);
 			throw myexception8();
 		}
 
@@ -179,16 +177,12 @@ int getListWithWord(vector<string> words, int len, vector<string> &answer, char 
 
 		if (!G->hasList)
 		{
-			//cout << "Invalid File! There is no word list in the file." << endl;
-			//exit(0);
 			throw myexception8();
 		}
 
 		hasCircle(G, 0);
 		if (G->withCircle)
 		{
-			//cout << "Invalid File! The words can form words ring." << endl;
-			//exit(0);
 			throw myexception7();
 		}
 
@@ -294,8 +288,6 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 
 		if (!G->hasList)
 		{
-			//cout << "Invalid File! There is no word list in the file." << endl;
-			//exit(0);
 			throw myexception8();
 		}
 
@@ -331,8 +323,6 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 
 		if (!G->hasList)
 		{
-			//cout << "Invalid File! There is no word list in the file." << endl;
-			//exit(0);
 			throw myexception8();
 		}
 
@@ -340,8 +330,6 @@ int getListWithLength(vector<string> words, int len, vector<string> &answer, cha
 		hasCircle(G, 0);
 		if (G->withCircle)
 		{
-			//cout << "Invalid File! The words can form words ring." << endl;
-			//exit(0);
 			throw myexception7();
 		}
 
